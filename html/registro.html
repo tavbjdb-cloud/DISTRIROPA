@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DistriRopa | Registrarse</title>
+  <link rel="icon" href="../img/Icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body class="acceso">
+  <div class="caja">
+    <a href="login.html" class="small">← Iniciar sesión</a>
+    <h1 class="mt-2">Crea tu cuenta</h1>
+
+    <form novalidate>
+      <div class="mb-3">
+        <label for="nombres" class="form-label">Nombre</label>
+        <input id="nombres" class="form-control" required>
+        <div class="invalid-feedback">Escribe tu nombre.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="apellidos" class="form-label">Apellido</label>
+        <input id="apellidos" class="form-control" required>
+        <div class="invalid-feedback">Escribe tu apellido.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="correoR" class="form-label">Correo institucional</label>
+        <input id="correoR" type="email" class="form-control" required>
+        <small class="form-text">El que te asignó el centro de formación.</small>
+        <div class="invalid-feedback">Escribe un correo válido.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="claveR" class="form-label">Contraseña</label>
+        <input id="claveR" type="password" class="form-control" minlength="8" pattern="(?=.*[0-9]).{8,}" required>
+        <small class="form-text">Mínimo 8 caracteres, con un número.</small>
+      </div>
+
+      <div class="form-check mb-3">
+        <input id="datos" type="checkbox" class="form-check-input" required>
+        <label for="datos" class="form-check-label">
+          Autorizo el tratamiento de mis datos personales (Ley 1581 de 2012). <a href="ayuda.html">Leer la política</a>
+        </label>
+      </div>
+
+      <button class="btn btn-pideya w-100" type="submit">Crear mi cuenta</button>
+    </form>
+
+    <p class="text-center mt-3 mb-0">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+  </div>
+</body>
+</html>

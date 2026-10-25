@@ -1,0 +1,170 @@
+/* DistriRopa - Estilos generales y sencillos */
+:root {
+  --primario: #1e293b;      /* Azul oscuro elegante */
+  --primario-osc: #0f172a;
+  --acento: #2563eb;        /* Azul principal para botones y enlaces */
+  --acento-osc: #1d4ed8;
+  --fondo: #f3f4f6;         /* Gris claro de fondo */
+  --texto: #1f2937;
+  --gris: #6b7280;
+  --borde: #d1d5db;
+  --error: #dc2626;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  color: var(--texto);
+  background: var(--fondo);
+  line-height: 1.5;
+}
+
+/* Contenedor centrado para Login, Registro e Inicio */
+.acceso {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.caja {
+  background: #fff;
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Tipografía y enlaces */
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--primario);
+}
+
+a {
+  color: var(--acento);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.small {
+  font-size: 0.9rem;
+}
+
+/* Formularios */
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 1rem;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  border-color: var(--acento);
+}
+
+.form-text {
+  display: block;
+  color: var(--gris);
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
+}
+
+.invalid-feedback {
+  display: none;
+  color: var(--error);
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
+}
+
+/* Checkbox */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-check-input {
+  margin-top: 0.25rem;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn-pideya {
+  background: var(--acento);
+  color: #fff;
+}
+
+.btn-pideya:hover {
+  background: var(--acento-osc);
+}
+
+.btn-outline-verde {
+  background: transparent;
+  border: 2px solid var(--acento);
+  color: var(--acento);
+}
+
+.btn-outline-verde:hover {
+  background: var(--acento);
+  color: #fff;
+}
+
+/* Utilidades sencillas */
+.w-100 { width: 100%; }
+.text-center { text-align: center; }
+.text-end { text-align: right; margin-bottom: 1rem; font-size: 0.9rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.my-3 { margin: 1rem 0; }
+.mb-0 { margin-bottom: 0; }
+.d-grid { display: grid; }
+.gap-2 { gap: 0.75rem; }
+
