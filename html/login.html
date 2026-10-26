@@ -8,29 +8,56 @@
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body class="acceso">
-  <div class="caja">
-    <a href="../index.html" class="small">← Volver al inicio</a>
-    <div class="text-center my-3">
-      <img src="../img/Icon.png" width="56" height="56" alt="DistriRopa">
-    </div>
-    <h1 class="text-center">Iniciar sesión</h1>
-
-    <form novalidate>
-      <div class="mb-3">
-        <label for="correo" class="form-label">Correo institucional</label>
-        <input id="correo" type="email" class="form-control" placeholder="ejemplo@gmail.com" required>
+  <main class="acceso-layout">
+    <section class="acceso-visual" aria-label="Colección de moda DistriRopa">
+      <img src="../img/representativa.jfif" alt="Conjunto de prendas de moda">
+      <div class="acceso-visual-texto">
+        <strong>Tu estilo, tu esencia.</strong>
+        <span>Encuentra prendas para cada ocasión.</span>
       </div>
+    </section>
 
-      <div class="mb-3">
-        <label for="clave" class="form-label">Contraseña</label>
-        <input id="clave" type="password" class="form-control" required>
+    <section class="acceso-panel">
+      <div class="acceso-contenido">
+        <a class="btn btn-outline-verde acceso-volver" href="../index.html">&larr; Volver al inicio</a>
+        <div class="acceso-identidad">
+          <img src="../img/Icon.png" width="44" height="44" alt="">
+          <div>
+            <strong>DISTRIROPA</strong>
+            <span>Tu tienda de moda</span>
+          </div>
+        </div>
+
+        <div class="acceso-titulo">
+          <h1>Bienvenido</h1>
+          <p>Inicia sesión en tu cuenta</p>
+        </div>
+
+        <form class="acceso-formulario">
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo electrónico</label>
+            <input id="correo" name="correo" type="email" class="form-control" placeholder="tu@email.com" autocomplete="email" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="clave" class="form-label">Contraseña</label>
+            <input id="clave" name="clave" type="password" class="form-control" autocomplete="current-password" required>
+          </div>
+
+          <div class="acceso-opciones">
+            <label for="recordarme" class="form-check">
+              <input id="recordarme" type="checkbox" class="form-check-input">
+              <span>Recordarme</span>
+            </label>
+            <a href="ayuda.html">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button class="btn btn-pideya w-100" type="submit">Iniciar sesión</button>
+        </form>
+
+        <p class="acceso-alternativa">¿No tienes una cuenta? <a href="registro.html">Regístrate gratis</a></p>
       </div>
-
-      <p class="text-end"><a href="ayuda.html">¿Olvidaste tu contraseña?</a></p>
-      <button class="btn btn-pideya w-100" type="submit">Ingresar</button>
-    </form>
-
-    <p class="text-center mt-3 mb-0">¿No tienes cuenta? <a href="registro.html">Crear una cuenta</a></p>
-  </div>
+    </section>
+  </main>
 </body>
 </html>

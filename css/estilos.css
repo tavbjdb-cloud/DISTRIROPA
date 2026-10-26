@@ -17,6 +17,12 @@
   padding: 0;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 body {
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 16px;
@@ -25,22 +31,187 @@ body {
   line-height: 1.5;
 }
 
-/* Contenedor centrado para Login, Registro e Inicio */
+/* Acceso y registro */
 .acceso {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
+  min-height: 100dvh;
+  padding: 0;
+  background: #fff;
 }
 
-.caja {
-  background: #fff;
+.acceso-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   width: 100%;
-  max-width: 420px;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+}
+
+.acceso-visual {
+  position: relative;
+  min-width: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--primario);
+}
+
+.acceso-visual::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.02) 35%, rgba(15, 23, 42, 0.68));
+}
+
+.acceso-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.acceso-visual-texto {
+  position: absolute;
+  z-index: 1;
+  right: 2rem;
+  bottom: 2.5rem;
+  left: 2.5rem;
+  color: #fff;
+}
+
+.acceso-visual-texto strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 1.35rem;
+}
+
+.acceso-visual-texto span {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.acceso-panel {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(2rem, 5vw, 5rem);
+}
+
+.acceso-contenido {
+  width: min(100%, 460px);
+  margin: auto 0;
+}
+
+.acceso-volver {
+  margin-bottom: 1.5rem;
+}
+
+.acceso-identidad {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: clamp(2rem, 5vh, 3rem);
+}
+
+.acceso-identidad img {
+  width: 44px;
+  height: 44px;
+  padding: 4px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  object-fit: contain;
+}
+
+.acceso-identidad strong,
+.acceso-identidad span {
+  display: block;
+}
+
+.acceso-identidad strong {
+  color: #111827;
+  font-size: 0.95rem;
+}
+
+.acceso-identidad span {
+  color: var(--gris);
+  font-size: 0.8rem;
+}
+
+.acceso-titulo h1 {
+  margin-bottom: 0.35rem;
+  font-size: 2rem;
+}
+
+.acceso-titulo p {
+  margin-bottom: 1.75rem;
+  color: var(--gris);
+}
+
+.acceso-formulario .mb-3 {
+  margin-bottom: 1.1rem;
+}
+
+.acceso-formulario .form-label {
+  margin-bottom: 0.4rem;
+  color: var(--primario);
+  font-size: 0.88rem;
+}
+
+.acceso-formulario .form-control {
+  min-height: 48px;
+  border-color: #dfe3e8;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.acceso-formulario .form-control:focus {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.acceso-opciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.85rem;
+}
+
+.acceso-opciones .form-check {
+  align-items: center;
+}
+
+.acceso-opciones .form-check-input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--acento);
+}
+
+.acceso-formulario .btn-pideya {
+  min-height: 48px;
+  background: #111827;
+}
+
+.acceso-formulario .btn-pideya:hover {
+  background: #273244;
+}
+
+.acceso-alternativa {
+  margin-top: 1.5rem;
+  color: var(--gris);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.acceso-campos-dobles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 /* Tipografía y enlaces */
@@ -177,7 +348,7 @@ a:hover {
 .encabezado {
   background: #fff;
   border-bottom: 1px solid var(--borde);
-  padding: 0.85rem 2rem;
+  padding: 0.85rem clamp(1rem, 4vw, 2rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -207,14 +378,20 @@ a:hover {
 .menu {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 1.25rem;
   flex-wrap: wrap;
 }
 
 .menu a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
   color: var(--texto);
   padding: 0.35rem 0.6rem;
   border-radius: 6px;
+  white-space: nowrap;
   transition: background 0.2s, color 0.2s;
 }
 
@@ -249,9 +426,15 @@ main {
   margin-bottom: 2.5rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: center;
   gap: 2rem;
+}
+
+.presentacion-texto,
+.presentacion-imagen,
+.detalle-producto {
+  min-width: 0;
 }
 
 .presentacion-texto .etiqueta {
@@ -289,10 +472,53 @@ main {
   text-decoration: none;
 }
 
+.tallas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.boton-tallas {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--primario);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.boton-tallas:hover {
+  border-color: var(--acento);
+  background: #eff6ff;
+  color: var(--acento);
+  transform: translateY(-1px);
+}
+
+.boton-tallas:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.3);
+  outline-offset: 2px;
+}
+
 .presentacion-imagen img {
   width: 100%;
   max-height: 300px;
   object-fit: cover;
+  border-radius: 10px;
+}
+
+.detalle-producto img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
   border-radius: 10px;
 }
 
@@ -315,7 +541,7 @@ main {
 /* Categorías */
 .categorias {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 1.25rem;
 }
 
@@ -357,11 +583,12 @@ main {
 /* Productos destacados */
 .productos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 1.5rem;
 }
 
 .producto {
+  min-width: 0;
   background: #fff;
   border-radius: 10px;
   border: 1px solid var(--borde);
@@ -378,6 +605,7 @@ main {
 }
 
 .producto-info {
+  min-width: 0;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
@@ -450,10 +678,93 @@ main {
     text-align: center;
   }
 
+  .menu {
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
   .presentacion {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding: 1.5rem;
     text-align: center;
+  }
+
+  .detalle-producto img {
+    max-height: 360px;
+  }
+
+  .acceso-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .acceso-visual {
+    min-height: 0;
+    height: clamp(190px, 28vh, 280px);
+  }
+
+  .acceso-visual-texto {
+    right: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+
+  .acceso-panel {
+    padding: 2.5rem clamp(1.25rem, 7vw, 3rem) 3rem;
+  }
+
+  .acceso-identidad {
+    margin-bottom: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .encabezado {
+    padding: 0.75rem 1rem;
+  }
+
+  .menu {
+    gap: 0.25rem;
+  }
+
+  .menu a {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.9rem;
+  }
+
+  main {
+    padding: 1.25rem 1rem;
+  }
+
+  .presentacion {
+    gap: 1.25rem;
+    padding: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .presentacion-texto h1 {
+    font-size: 1.75rem;
+  }
+
+  .productos {
+    gap: 1rem;
+  }
+
+  .producto-info {
+    padding: 1rem;
+  }
+
+  .acceso-panel {
+    padding: 2rem 1.25rem 2.5rem;
+  }
+
+  .acceso-titulo h1 {
+    font-size: 1.75rem;
+  }
+
+  .acceso-campos-dobles {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
   }
 }
 

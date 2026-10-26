@@ -8,47 +8,98 @@
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body class="acceso">
-  <div class="caja">
-    <a href="login.html" class="small">← Iniciar sesión</a>
-    <h1 class="mt-2">Crea tu cuenta</h1>
-
-    <form novalidate>
-      <div class="mb-3">
-        <label for="nombres" class="form-label">Nombre</label>
-        <input id="nombres" class="form-control" required>
-        <div class="invalid-feedback">Escribe tu nombre.</div>
+  <main class="acceso-layout">
+    <section class="acceso-visual" aria-label="Colección de moda DistriRopa">
+      <img src="../img/representativa.jfif" alt="Conjunto de prendas de moda">
+      <div class="acceso-visual-texto">
+        <strong>Viste tu próxima historia.</strong>
+        <span>Tu estilo empieza aquí.</span>
       </div>
+    </section>
 
-      <div class="mb-3">
-        <label for="apellidos" class="form-label">Apellido</label>
-        <input id="apellidos" class="form-control" required>
-        <div class="invalid-feedback">Escribe tu apellido.</div>
+    <section class="acceso-panel">
+      <div class="acceso-contenido">
+        <a class="btn btn-outline-verde acceso-volver" href="../index.html">&larr; Volver al inicio</a>
+        <div class="acceso-identidad">
+          <img src="../img/Icon.png" width="44" height="44" alt="">
+          <div>
+            <strong>DISTRIROPA</strong>
+            <span>Tu tienda de moda</span>
+          </div>
+        </div>
+
+        <div class="acceso-titulo">
+          <h1>Crea tu cuenta</h1>
+          <p>Regístrate para descubrir tu próximo estilo</p>
+        </div>
+
+        <form class="acceso-formulario">
+          <div class="acceso-campos-dobles">
+            <div class="mb-3">
+              <label for="nombres" class="form-label">Nombre</label>
+              <input id="nombres" name="nombres" class="form-control" placeholder="Juan" autocomplete="given-name" required>
+            </div>
+            <div class="mb-3">
+              <label for="apellidos" class="form-label">Apellido</label>
+              <input id="apellidos" name="apellidos" class="form-control" placeholder="Pérez" autocomplete="family-name" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="correoR" class="form-label">Correo electrónico</label>
+            <input id="correoR" name="correo" type="email" class="form-control" placeholder="tu@email.com" autocomplete="email" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" class="form-control" placeholder="300 123 4567" autocomplete="tel" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="direccion" class="form-label">Dirección</label>
+            <input id="direccion" name="direccion" class="form-control" placeholder="Calle 123 #45-67" autocomplete="street-address" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="ciudad" class="form-label">Ciudad</label>
+            <input id="ciudad" name="ciudad" class="form-control" placeholder="Bogotá" autocomplete="address-level2" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="claveR" class="form-label">Contraseña</label>
+            <input id="claveR" name="clave" type="password" class="form-control" minlength="8" pattern="(?=.*[0-9]).{8,}" autocomplete="new-password" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="confirmarClave" class="form-label">Confirmar contraseña</label>
+            <input id="confirmarClave" name="confirmarClave" type="password" class="form-control" minlength="8" autocomplete="new-password" required>
+          </div>
+
+          <div class="form-check mb-3">
+            <input id="datos" type="checkbox" class="form-check-input" required>
+            <label for="datos" class="form-check-label">
+              Autorizo el tratamiento de mis datos personales. <a href="ayuda.html">Leer la política</a>
+            </label>
+          </div>
+
+          <button class="btn btn-pideya w-100" type="submit">Crear mi cuenta</button>
+        </form>
+
+        <p class="acceso-alternativa">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
       </div>
+    </section>
+  </main>
+  <script>
+    const claveRegistro = document.getElementById("claveR");
+    const confirmacionClave = document.getElementById("confirmarClave");
 
-      <div class="mb-3">
-        <label for="correoR" class="form-label">Correo institucional</label>
-        <input id="correoR" type="email" class="form-control" required>
-        <small class="form-text">El que te asignó el centro de formación.</small>
-        <div class="invalid-feedback">Escribe un correo válido.</div>
-      </div>
+    function validarConfirmacionClave() {
+      const noCoinciden = confirmacionClave.value && confirmacionClave.value !== claveRegistro.value;
+      confirmacionClave.setCustomValidity(noCoinciden ? "Las contraseñas no coinciden." : "");
+    }
 
-      <div class="mb-3">
-        <label for="claveR" class="form-label">Contraseña</label>
-        <input id="claveR" type="password" class="form-control" minlength="8" pattern="(?=.*[0-9]).{8,}" required>
-        <small class="form-text">Mínimo 8 caracteres, con un número.</small>
-      </div>
-
-      <div class="form-check mb-3">
-        <input id="datos" type="checkbox" class="form-check-input" required>
-        <label for="datos" class="form-check-label">
-          Autorizo el tratamiento de mis datos personales (Ley 1581 de 2012). <a href="ayuda.html">Leer la política</a>
-        </label>
-      </div>
-
-      <button class="btn btn-pideya w-100" type="submit">Crear mi cuenta</button>
-    </form>
-
-    <p class="text-center mt-3 mb-0">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
-  </div>
+    claveRegistro.addEventListener("input", validarConfirmacionClave);
+    confirmacionClave.addEventListener("input", validarConfirmacionClave);
+  </script>
 </body>
 </html>
