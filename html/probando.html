@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DistriRopa</title>
+
+    <link rel="icon" href="../img/Icon.png" type="image/png">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+    <header class="encabezado">
+        <a href="index.html" class="marca">
+            <img src="../img/Icon.png" alt="Logo de DistriRopa">
+            <span>DistriRopa</span>
+        </a>
+
+        <nav class="menu">
+            <a href="menu.html">Catalogo</a>
+            <a href="carrito.html">Carrito</a>
+            <a href="perfil.html">Perfil</a>
+            <a href="ayuda.html">Ayuda</a>
+        </nav>
+    </header>
+
+        <section class="producto">
+            <div class="producto-imagen">
+                <img src="../img/camiseta.png" alt="Camiseta negra de algodón">
+            </div>
+
+            <div class="producto-info">
+                <h1>Camiseta negra</h1>
+
+                <p class="precio">$35.000</p>
+
+                <h2>Tallas disponibles</h2>
+                <div class="tallas">
+                    <button type="button" class="talla">S</button>
+                    <button type="button" class="talla">M</button>
+                    <button type="button" class="talla">L</button>
+                    <button type="button" class="talla">XL</button>
+                </div>
+
+                <h2>Descripción</h2>
+                <p>
+                    Camiseta negra de algodón de alta calidad,
+                    cómoda y versátil, ideal para el uso diario
+                    y para combinar con diferentes estilos.
+                </p>
+
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" value="1" min="1" max="10">
+
+                <button type="button" id="agregarCarrito">
+                    Agregar al carrito
+                </button>
+
+                <p id="mensaje" role="status"></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const botonesTalla = document.querySelectorAll(".talla");
+        const botonAgregar = document.getElementById("agregarCarrito");
+        const cantidad = document.getElementById("cantidad");
+        const mensaje = document.getElementById("mensaje");
+
+        let tallaSeleccionada = "";
+
+        botonesTalla.forEach(boton => {
+            boton.addEventListener("click", () => {
+                botonesTalla.forEach(talla => {
+                    talla.classList.remove("seleccionada");
+                });
+
+                boton.classList.add("seleccionada");
+                tallaSeleccionada = boton.textContent;
+                mensaje.textContent = "";
+            });
+        });
+
+        botonAgregar.addEventListener("click", () => {
+            const unidades = Number(cantidad.value);
+
+            if (!tallaSeleccionada) {
+                mensaje.textContent = "Selecciona una talla.";
+                return;
+            }
+
+            if (!Number.isInteger(unidades) || unidades < 1 || unidades > 10) {
+                mensaje.textContent = "Selecciona una cantidad entre 1 y 10.";
+                return;
+            }
+
+            const producto = {
+                nombre: "Camiseta negra",
+                precio: 35000,
+                talla: tallaSeleccionada,
+                cantidad: unidades
+            };
+
+            let carrito = JSON.parse(
+                localStorage.getItem("carritoDistriRopa") || "[]"
+            );
+
+            carrito.push(producto);
+
+            localStorage.setItem(
+                "carritoDistriRopa",
+                JSON.stringify(carrito)
+            );
+
+            mensaje.textContent =
+                "¡Camiseta agregada al carrito correctamente!";
+        });
+    </script>
+
+</body>
+</html>
