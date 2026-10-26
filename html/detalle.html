@@ -21,10 +21,36 @@
       <a href="ayuda.html">Ayuda</a>
     </nav>
   </header>
-    <img src="../img/camiseta.png" alt="Camiseta negra">
-    <h1>Camiseta negra</h1>
-    <p>Tallas: S, M, L, XL</p>
-    <p>Descripción: Camiseta de algodón de alta calidad, ideal para días soleados.</p>
-    <p>Precio: $35.000</p>
+
+  <main>
+    <section class="presentacion">
+      <div class="presentacion-texto">
+        <h1>Camiseta basica</h1>
+        <p>Descripción: Camiseta de algodón de alta calidad, ideal para días soleados.</p>
+
+        <div class="tallas">
+            <button type="button" class="boton-tallas">S</button>
+            <button type="button" class="boton-tallas">M</button>
+            <button type="button" class="boton-tallas">L</button>
+            <button type="button" class="boton-tallas">XL</button>
+        </div>
+
+        <p>Precio: $35.000</p>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" value="1" min="1" max="10">
+        <button type="button" id="agregarCarrito" class="boton-producto">Agregar al carrito</button>
+      </div>
+
+      <div class="detalle-producto">
+        <img src="../img/camiseta.png" alt="camiseta negra">
+      </div>
+    </section>
+    </main>
+
+    <footer class="pie-pagina">
+    <h2>DistriRopa</h2>
+    <p>Tu estilo, tu esencia.</p>
+    <p>&copy; 2026 DistriRopa.</p>
+  </footer>
 </body>
 </html>
